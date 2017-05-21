@@ -14,6 +14,7 @@ public class Game {
 	SideBar bar = new SideBar();
 	JPanel mainPanel = new JPanel();
 	JLabel barTitle = new JLabel("FIND:");
+	JLabel snakeName = new JLabel("snake");
 
 	public static void main(String[] args) {
 
@@ -42,10 +43,14 @@ public class Game {
 		bar.setBackground(Color.PINK);
 		bar.add(barTitle);
 		barTitle.setFont(new Font("Serif", Font.PLAIN, 45));
+		bar.setLayout(null);
+		barTitle.setBounds(50, 10, 200, 100);
+		bar.add(snakeName);
+		snakeName.setFont(new Font("Serif", Font.PLAIN, 30));
 		bar.setOpaque(true);
 		// frame.add(bar, BorderLayout.EAST);
 		frame.setVisible(true);
-
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
