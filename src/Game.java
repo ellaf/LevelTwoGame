@@ -20,9 +20,13 @@ public class Game implements MouseListener {
 	JLabel snakeName = new JLabel("snake");
 	JLabel ringName = new JLabel("ring");
 	JLabel backpackName = new JLabel("backpack");
+	JLabel sparkleName = new JLabel("sparkles");
+	JLabel pawprintName = new JLabel("pawprints");
 	int findMeY = 90;
 	int findMeSecondY = 130;
 	int findMeThirdY = 170;
+	int findMeFourthY = 210;
+	int findMeFifthY = 250;
 	ArrayList<Integer> xList = new ArrayList<Integer>();
 	ArrayList<Integer> yList = new ArrayList<Integer>();
 
@@ -51,8 +55,10 @@ public class Game implements MouseListener {
 		frame.setSize(1800, 1000);
 		// mainPanel.setPreferredSize(new Dimension(500, 500));
 		frame.setLayout(new BorderLayout());
+
 		mainPanel.add(panel, BorderLayout.WEST);
 		mainPanel.add(bar, BorderLayout.EAST);
+
 		frame.add(mainPanel);
 		panel.setPreferredSize(new Dimension(1500, 1000));
 		// bar.setSize(400, 1000);
@@ -62,21 +68,33 @@ public class Game implements MouseListener {
 		bar.add(barTitle);
 		barTitle.setFont(new Font("Serif", Font.PLAIN, 45));
 		bar.setLayout(null);
-		barTitle.setBounds(80, 20, 200, 100);
-		bar.add(snakeName);
-		snakeName.setFont(new Font("Serif", Font.PLAIN, 30));
-		snakeName.setBounds(100, findMeY, 100, 75);
-		bar.add(ringName);
-		ringName.setFont(new Font("Serif", Font.PLAIN, 30));
-		ringName.setBounds(110, findMeSecondY, 100, 75);
-		bar.add(backpackName);
-		backpackName.setFont(new Font("Serif", Font.PLAIN, 30));
-		backpackName.setBounds(83, findMeThirdY, 275, 75);
+		barTitle.setBounds(84, 20, 200, 100);
+		objectNames();
 		bar.setOpaque(true);
 		// frame.add(bar, BorderLayout.EAST);
 		frame.setVisible(true);
 		frame.addMouseListener(this);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	void objectNames() {
+
+		bar.add(snakeName);
+		snakeName.setFont(new Font("Serif", Font.PLAIN, 30));
+		snakeName.setBounds(102, findMeY, 100, 75);
+		bar.add(ringName);
+		ringName.setFont(new Font("Serif", Font.PLAIN, 30));
+		ringName.setBounds(113, findMeSecondY, 100, 75);
+		bar.add(backpackName);
+		backpackName.setFont(new Font("Serif", Font.PLAIN, 30));
+		backpackName.setBounds(83, findMeThirdY, 275, 75);
+		bar.add(sparkleName);
+		sparkleName.setFont(new Font("Serif", Font.PLAIN, 30));
+		sparkleName.setBounds(90, findMeFourthY, 250, 75);
+		bar.add(pawprintName);
+		pawprintName.setFont(new Font("Serif", Font.PLAIN, 30));
+		pawprintName.setBounds(83, findMeFifthY, 275, 75);
+
 	}
 
 	@Override
