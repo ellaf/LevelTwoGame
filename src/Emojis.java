@@ -11,6 +11,7 @@ public class Emojis {
 	public static BufferedImage backpack;
 	public static BufferedImage sparkles;
 	public static BufferedImage pawprints;
+	public static BufferedImage diamond;
 
 	Emojis() {
 		try {
@@ -19,6 +20,7 @@ public class Emojis {
 			backpack = ImageIO.read(this.getClass().getResourceAsStream("backpack.png"));
 			sparkles = ImageIO.read(this.getClass().getResourceAsStream("sparkles.png"));
 			pawprints = ImageIO.read(this.getClass().getResourceAsStream("pawprints.png"));
+			diamond = ImageIO.read(this.getClass().getResourceAsStream("diamond.png"));
 
 		} catch (IOException e) {
 
@@ -34,6 +36,7 @@ public class Emojis {
 		g.drawImage(backpack, 840, 770, 30, 30, null);
 		g.drawImage(sparkles, 680, 756, 30, 30, null);
 		g.drawImage(pawprints, 1079, 782, 30, 30, null);
+		g.drawImage(diamond, 316, 928, 30, 30, null);
 
 	}
 
