@@ -36,7 +36,7 @@ public class Emojis {
 		g.drawImage(backpack, 840, 770, 30, 30, null);
 		g.drawImage(sparkles, 680, 756, 30, 30, null);
 		g.drawImage(pawprints, 1079, 782, 30, 30, null);
-		g.drawImage(diamond, 316, 928, 30, 30, null);
+		g.drawImage(diamond, 315, 900, 30, 30, null);
 
 	}
 

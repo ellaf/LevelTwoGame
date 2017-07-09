@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Game implements MouseListener {
@@ -45,8 +46,8 @@ public class Game implements MouseListener {
 	int ringY = 546;
 	int snakeX = 1121;
 	int snakeY = 466;
-	int diamondX = 337;
-	int diamondY = 974;
+	int diamondX = 335;
+	int diamondY = 930;
 	boolean checkMe = false;
 	boolean checkMe2 = false;
 	boolean checkMe3 = false;
@@ -90,7 +91,7 @@ public class Game implements MouseListener {
 		// bar.setSize(400, 1000);
 		bar.setPreferredSize(new Dimension(285, 1000));
 		// bar.setBounds(1800, 900, 500, 500);
-		bar.setBackground(Color.PINK);
+		bar.setBackground(Color.BLUE);
 		bar.add(barTitle);
 		barTitle.setFont(new Font("Serif", Font.PLAIN, 45));
 		bar.setLayout(null);
@@ -162,11 +163,13 @@ public class Game implements MouseListener {
 		snakeName.setBounds(foundMeX, findMeY, foundMeWidth, foundMeHeight);
 		checkMe = true;
 		}
-		//if(checkMe == true && checkMe2 == true && checkMe3 == true && checkMe4 == true && checkMe5 == true){
-		//bar.add(congrats);
-		//congrats.setFont(new Font("Serif", Font.PLAIN, 30));
-		//congrats.setBounds(70, findMeY5 + 80, 275, 75);
-		//}
+		if(checkMe == true && checkMe2 == true && checkMe3 == true && checkMe4 == true && checkMe5 == true && checkMe6 == true){
+		int levelSwitch = JOptionPane.showConfirmDialog(null, "Congratulations! You found all the pictures! \n Would you like to start the next puzzle?");
+		 if(levelSwitch == 1){
+			JOptionPane.showMessageDialog(null, "Ok! Goodbye!");
+			System.exit(0);
+		 }
+		}
 	}
 
 	@Override
