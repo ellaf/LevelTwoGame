@@ -40,6 +40,8 @@ public class SideBar extends JPanel implements ActionListener, KeyListener{
 		barTitle.setBounds(84, 20, 200, 100);
 		objectNames();
 		setOpaque(true);
+		setBackground(Color.PINK);
+		
 	}
 	void objectNames() {
 
@@ -73,7 +75,16 @@ public class SideBar extends JPanel implements ActionListener, KeyListener{
 		if(currentBar > BAR2){
 		currentBar = BAR1;
 		}
+		if(currentBar == BAR1){
+			setBackground(Color.PINK);
+		
+		}
+		System.out.println(currentBar);
+		if(currentBar == 1){
+			setBackground(Color.BLUE);
+		}
 		repaint();
+		
 	}
 	
 	void foundSparkles(){
@@ -142,14 +153,6 @@ public class SideBar extends JPanel implements ActionListener, KeyListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-		if(currentBar == BAR1){
-			setBackground(Color.PINK);
-		
-		}
-		System.out.println(currentBar);
-		if(currentBar == 1){
-			setBackground(Color.BLUE);
-		}
 		
 	}
 }

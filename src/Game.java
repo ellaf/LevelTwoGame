@@ -2,10 +2,15 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Insets;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,6 +22,8 @@ public class Game implements MouseListener {
 	PicturePanel panel = new PicturePanel();
 	SideBar bar = new SideBar();
 	JPanel mainPanel = new JPanel();
+	Emojis emoji = new Emojis();
+	int gameNumber = 0;
 	int sparklesX = 699;
 	int sparklesY = 799;
 	int backpackX = 861;
@@ -35,6 +42,11 @@ public class Game implements MouseListener {
 	boolean checkMe4 = false;
 	boolean checkMe5 = false;
 	boolean checkMe6 = false;
+	
+	
+	
+	
+	
 	
 	
 
@@ -70,6 +82,18 @@ public class Game implements MouseListener {
 		frame.setVisible(true);
 		frame.addMouseListener(this);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		try{
+		Image balloon = ImageIO.read(getClass().getResource("balloon.png"));
+		JButton balloonButton = new JButton(new ImageIcon(balloon));
+		panel.add(balloonButton);
+		balloonButton.setLocation(10, 10);
+		balloonButton.setMargin(new Insets(0,0,0,0));
+		}catch (Exception ex){
+		System.out.println(ex);
+		}
+		
+		
+			
 		
 	}
 
@@ -106,6 +130,8 @@ public class Game implements MouseListener {
 		JOptionPane.showMessageDialog(null, "Congratulations! You found all the pictures! \n Ready for level 2?");
 		 panel.nextLevelPicture();
 		 bar.nextLevelBar();
+		 gameNumber += 1;
+		
 		}
 	}
 
