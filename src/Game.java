@@ -1,18 +1,13 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Image;
-import java.awt.Insets;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -42,13 +37,7 @@ public class Game implements MouseListener {
 	boolean checkMe4 = false;
 	boolean checkMe5 = false;
 	boolean checkMe6 = false;
-	
-	
-	
-	
-	
-	
-	
+	JButton balloonButton;
 
 	public static void main(String[] args) {
 
@@ -64,14 +53,14 @@ public class Game implements MouseListener {
 
 	void add(int x, int y) {
 
-		//xList.add(x);
-	//	yList.add(y);
+		// xList.add(x);
+		// yList.add(y);
 
 	}
 
 	void setup() {
 
-	//	System.out.println(xList);
+		// System.out.println(xList);
 		frame.setSize(1800, 1000);
 		// mainPanel.setPreferredSize(new Dimension(500, 500));
 		frame.setLayout(new BorderLayout());
@@ -82,19 +71,17 @@ public class Game implements MouseListener {
 		frame.setVisible(true);
 		frame.addMouseListener(this);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		try{
-		Image balloon = ImageIO.read(getClass().getResource("balloon.png"));
-		JButton balloonButton = new JButton(new ImageIcon(balloon));
-		panel.add(balloonButton);
-		balloonButton.setLocation(10, 10);
-		balloonButton.setMargin(new Insets(0,0,0,0));
-		}catch (Exception ex){
-		System.out.println(ex);
+		try {
+			Image balloon = ImageIO.read(getClass().getResource("balloon.png"));
+			balloonButton = new JButton(new ImageIcon(balloon));
+			panel.setLayout(null);
+			panel.add(balloonButton);
+			balloonButton.addMouseListener(this);
+			balloonButton.setBorder(null);
+			balloonButton.setBounds(698, 336, 30, 30);
+		} catch (Exception ex) {
+			System.out.println(ex);
 		}
-		
-		
-			
-		
 	}
 
 	@Override
@@ -102,42 +89,46 @@ public class Game implements MouseListener {
 		// TODO Auto-generated method stub
 		System.out.println(e.getX());
 		System.out.println(e.getY());
-	//	if(e.getX() <= 10){
-	//	ringName.setText("Found me!");
-	//	ringName.setBounds(foundMeX, findMeY + 40, foundMeWidth, foundMeHeight);
-			
-	//	}
-		if(e.getX() >= sparklesX - 15 && e.getX() <= sparklesX + 15 && e.getY() <= sparklesY + 15 && e.getY() >= sparklesY - 15){
-		bar.foundSparkles();
-		checkMe4 = true;
-		}else if(e.getX() >= ringX - 15 && e.getX() <= ringX + 15 && e.getY() <= ringY + 15 && e.getY() >= ringY - 15){
-		bar.foundRing();
-		checkMe2 = true;
-		}else if(e.getX() >= backpackX - 15 && e.getX() <= backpackX + 15 && e.getY() <= backpackY + 15 && e.getY() >= backpackY - 15){
-		bar.foundBackpack();
-		checkMe3 = true;
-		}else if(e.getX() >= pawprintX - 15 && e.getX() <= pawprintX + 15 && e.getY() <= pawprintY + 15 && e.getY() >= pawprintY - 15){
-		bar.foundPawprint();
-		checkMe5 = true;
-		}else if(e.getX() >= diamondX - 15 && e.getX() <= diamondX + 15 && e.getY() <= diamondY + 15 && e.getY() >= diamondY - 15){
-		bar.foundDiamond();
-		checkMe6 = true;
-		}else if(e.getX() >= snakeX - 15 && e.getX() <= snakeX + 15 && e.getY() <= snakeY + 15 && e.getY() >= snakeY - 15){
-	    bar.foundSnake();
-		checkMe = true;
+		// if(e.getX() <= 10){
+		// ringName.setText("Found me!");
+		// ringName.setBounds(foundMeX, findMeY + 40, foundMeWidth, foundMeHeight);
+
+		// }
+		if (e.getX() >= sparklesX - 15 && e.getX() <= sparklesX + 15 && e.getY() <= sparklesY + 15 && e.getY() >= sparklesY - 15) {
+			bar.foundSparkles();
+			checkMe4 = true;
+		} else if (e.getX() >= ringX - 15 && e.getX() <= ringX + 15 && e.getY() <= ringY + 15 && e.getY() >= ringY - 15) {
+			bar.foundRing();
+			checkMe2 = true;
+		} else if (e.getX() >= backpackX - 15 && e.getX() <= backpackX + 15 && e.getY() <= backpackY + 15 && e.getY() >= backpackY - 15) {
+			bar.foundBackpack();
+			checkMe3 = true;
+		} else if (e.getX() >= pawprintX - 15 && e.getX() <= pawprintX + 15 && e.getY() <= pawprintY + 15 && e.getY() >= pawprintY - 15) {
+			bar.foundPawprint();
+			checkMe5 = true;
+		} else if (e.getX() >= diamondX - 15 && e.getX() <= diamondX + 15 && e.getY() <= diamondY + 15 && e.getY() >= diamondY - 15) {
+			bar.foundDiamond();
+			checkMe6 = true;
+		} else if (e.getX() >= snakeX - 15 && e.getX() <= snakeX + 15 && e.getY() <= snakeY + 15 && e.getY() >= snakeY - 15) {
+			bar.foundSnake();
+			checkMe = true;
 		}
-		if(checkMe == true && checkMe2 == true && checkMe3 == true && checkMe4 == true && checkMe5 == true && checkMe6 == true){
-		JOptionPane.showMessageDialog(null, "Congratulations! You found all the pictures! \n Ready for level 2?");
-		 panel.nextLevelPicture();
-		 bar.nextLevelBar();
-		 gameNumber += 1;
-		
+		if (checkMe == true && checkMe2 == true && checkMe3 == true && checkMe4 == true && checkMe5 == true && checkMe6 == true) {
+			JOptionPane.showMessageDialog(null, "Congratulations! You found all the pictures! \n Ready for level 2?");
+			panel.nextLevelPicture();
+			bar.nextLevelBar();
+			gameNumber += 1;
+
 		}
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
+		if (e.getSource().equals(balloonButton)) {
+			balloonButton.setVisible(false);
+			bar.foundBalloon();
+		}
 
 	}
 
@@ -156,7 +147,6 @@ public class Game implements MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 
 }
