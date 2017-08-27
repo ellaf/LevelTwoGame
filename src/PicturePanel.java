@@ -60,7 +60,7 @@ public class PicturePanel extends JPanel implements ActionListener, KeyListener{
 		g.drawImage(backgroundImg2, 0, 0, null);
 		}
 	
-		emoji.draw(g);
+	//	emoji.draw(g);
 	}
 
 	@Override

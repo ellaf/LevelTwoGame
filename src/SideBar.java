@@ -19,6 +19,7 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 	JLabel pawprintName = new JLabel("pawprints");
 	JLabel diamondName = new JLabel("diamond");
 	JLabel balloonName = new JLabel("balloon");
+	JLabel appleName = new JLabel("apple");
 	int time = 0;
 	int foundMeX = 76;
 	int foundMeWidth = 275;
@@ -73,7 +74,9 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 			balloonName.setFont(new Font("Serif", Font.PLAIN, 30));
 			balloonName.setBounds(95, findMeY7, 250, 75);
 		} else if (currentBar == BAR2) {
-
+		///	add(appleName);
+			///appleName.setFont(new Font("Serif", Font.PLAIN, 30));
+			///appleName.setBounds(102, findMeY, 100, 75);
 		}
 
 	}
@@ -90,6 +93,9 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 		System.out.println(currentBar);
 		if (currentBar == 1) {
 			setBackground(Color.BLUE);
+			add(appleName);
+			appleName.setFont(new Font("Serif", Font.PLAIN, 30));
+			appleName.setBounds(102, findMeY, 100, 75);
 		}
 		repaint();
 
@@ -134,6 +140,12 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 	void foundBalloon() {
 
 		balloonName.setVisible(false);
+
+	}
+	
+	void foundApple() {
+
+		appleName.setVisible(false);
 
 	}
 
