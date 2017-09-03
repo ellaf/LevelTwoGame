@@ -20,6 +20,10 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 	JLabel diamondName = new JLabel("diamond");
 	JLabel balloonName = new JLabel("balloon");
 	JLabel appleName = new JLabel("apple");
+	JLabel bowName = new JLabel("bow");
+	JLabel roseName = new JLabel("rose");
+	JLabel cloudName = new JLabel("cloud");
+
 	int time = 0;
 	int foundMeX = 76;
 	int foundMeWidth = 275;
@@ -51,33 +55,44 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 
 	void objectNames() {
 
-		if (currentBar == BAR1) {
-			add(snakeName);
-			snakeName.setFont(new Font("Serif", Font.PLAIN, 30));
-			snakeName.setBounds(102, findMeY, 100, 75);
-			add(ringName);
-			ringName.setFont(new Font("Serif", Font.PLAIN, 30));
-			ringName.setBounds(113, findMeY2, 100, 75);
-			add(backpackName);
-			backpackName.setFont(new Font("Serif", Font.PLAIN, 30));
-			backpackName.setBounds(83, findMeY3, 275, 75);
-			add(sparkleName);
-			sparkleName.setFont(new Font("Serif", Font.PLAIN, 30));
-			sparkleName.setBounds(90, findMeY4, 250, 75);
-			add(pawprintName);
-			pawprintName.setFont(new Font("Serif", Font.PLAIN, 30));
-			pawprintName.setBounds(83, findMeY5, 275, 75);
-			add(diamondName);
-			diamondName.setFont(new Font("Serif", Font.PLAIN, 30));
-			diamondName.setBounds(87, findMeY6, 250, 75);
-			add(balloonName);
-			balloonName.setFont(new Font("Serif", Font.PLAIN, 30));
-			balloonName.setBounds(95, findMeY7, 250, 75);
-		} else if (currentBar == BAR2) {
-		///	add(appleName);
-			///appleName.setFont(new Font("Serif", Font.PLAIN, 30));
-			///appleName.setBounds(102, findMeY, 100, 75);
-		}
+		add(snakeName);
+		snakeName.setFont(new Font("Serif", Font.PLAIN, 30));
+		snakeName.setBounds(102, findMeY, 100, 75);
+		add(ringName);
+		ringName.setFont(new Font("Serif", Font.PLAIN, 30));
+		ringName.setBounds(113, findMeY2, 100, 75);
+		add(backpackName);
+		backpackName.setFont(new Font("Serif", Font.PLAIN, 30));
+		backpackName.setBounds(83, findMeY3, 275, 75);
+		add(sparkleName);
+		sparkleName.setFont(new Font("Serif", Font.PLAIN, 30));
+		sparkleName.setBounds(90, findMeY4, 250, 75);
+		add(pawprintName);
+		pawprintName.setFont(new Font("Serif", Font.PLAIN, 30));
+		pawprintName.setBounds(83, findMeY5, 275, 75);
+		add(diamondName);
+		diamondName.setFont(new Font("Serif", Font.PLAIN, 30));
+		diamondName.setBounds(87, findMeY6, 250, 75);
+		add(balloonName);
+		balloonName.setFont(new Font("Serif", Font.PLAIN, 30));
+		balloonName.setBounds(95, findMeY7, 250, 75);
+
+	}
+
+	void objectNamesLevelTwo() {
+
+		add(appleName);
+		appleName.setFont(new Font("Serif", Font.PLAIN, 30));
+		appleName.setBounds(102, findMeY, 100, 75);
+		add(bowName);
+		bowName.setFont(new Font("Serif", Font.PLAIN, 30));
+		bowName.setBounds(109, findMeY2, 90, 75);
+		add(roseName);
+		roseName.setFont(new Font("Serif", Font.PLAIN, 30));
+		roseName.setBounds(110, findMeY3, 100, 75);
+		add(cloudName);
+		cloudName.setFont(new Font("Serif", Font.PLAIN, 30));
+		cloudName.setBounds(106, findMeY3, 100, 75);
 
 	}
 
@@ -93,9 +108,7 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 		System.out.println(currentBar);
 		if (currentBar == 1) {
 			setBackground(Color.BLUE);
-			add(appleName);
-			appleName.setFont(new Font("Serif", Font.PLAIN, 30));
-			appleName.setBounds(102, findMeY, 100, 75);
+			objectNamesLevelTwo();
 		}
 		repaint();
 
@@ -142,10 +155,28 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 		balloonName.setVisible(false);
 
 	}
-	
+
 	void foundApple() {
 
 		appleName.setVisible(false);
+
+	}
+
+	void foundBow() {
+
+		bowName.setVisible(false);
+
+	}
+
+	void foundRose() {
+
+		roseName.setVisible(false);
+
+	}
+
+	void foundCloud() {
+
+		cloudName.setVisible(false);
 
 	}
 
