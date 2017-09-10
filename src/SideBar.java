@@ -23,8 +23,13 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 	JLabel bowName = new JLabel("bow");
 	JLabel roseName = new JLabel("rose");
 	JLabel cloudName = new JLabel("cloud");
+	JLabel chickenName = new JLabel("chicken");
+	JLabel earthName = new JLabel("earth");
+	JLabel cactusName = new JLabel("cactus");
+	JLabel timeName = new JLabel("Time: 0");
+		
 
-	int time = 0;
+	
 	int foundMeX = 76;
 	int foundMeWidth = 275;
 	int foundMeHeight = 75;
@@ -55,6 +60,7 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 
 	void objectNames() {
 
+		
 		add(snakeName);
 		snakeName.setFont(new Font("Serif", Font.PLAIN, 30));
 		snakeName.setBounds(102, findMeY, 100, 75);
@@ -76,6 +82,9 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 		add(balloonName);
 		balloonName.setFont(new Font("Serif", Font.PLAIN, 30));
 		balloonName.setBounds(95, findMeY7, 250, 75);
+		add(timeName);
+		timeName.setFont(new Font("Serif", Font.PLAIN, 30));
+		timeName.setBounds(95, 900, 250, 75);
 
 	}
 
@@ -92,7 +101,16 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 		roseName.setBounds(110, findMeY3, 100, 75);
 		add(cloudName);
 		cloudName.setFont(new Font("Serif", Font.PLAIN, 30));
-		cloudName.setBounds(106, findMeY3, 100, 75);
+		cloudName.setBounds(101, findMeY4, 100, 75);
+		add(chickenName);
+		chickenName.setFont(new Font("Serif", Font.PLAIN, 30));
+		chickenName.setBounds(92, findMeY5, 250, 75);
+		add(earthName);
+		earthName.setFont(new Font("Serif", Font.PLAIN, 30));
+		earthName.setBounds(101, findMeY6, 100, 75);
+		add(cactusName);
+		cactusName.setFont(new Font("Serif", Font.PLAIN, 30));
+		cactusName.setBounds(101, findMeY7, 100, 75);
 
 	}
 
@@ -178,6 +196,28 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 
 		cloudName.setVisible(false);
 
+	}
+	
+	void foundChicken() {
+		
+		chickenName.setVisible(false);
+		
+	}
+	void foundEarth() {
+		
+		earthName.setVisible(false);
+		
+	}
+	void foundCactus() {
+		
+		cactusName.setVisible(false);
+		
+	}
+	void showTime(int time) {
+		
+
+	timeName.setText("Time: " + time);
+		
 	}
 
 	@Override

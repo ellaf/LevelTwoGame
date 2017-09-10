@@ -1,6 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -10,9 +12,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
-public class Game implements MouseListener {
+public class Game implements MouseListener, ActionListener {
 
+	Timer timer = new Timer(1000, this);
+	int time = 0;
 	JFrame frame = new JFrame();
 	PicturePanel panel = new PicturePanel();
 	SideBar bar = new SideBar();
@@ -38,6 +43,13 @@ public class Game implements MouseListener {
 	boolean checkMe5 = false;
 	boolean checkMe6 = false;
 	boolean checkMe7 = false;
+	boolean checkMeL2 = false;
+	boolean checkMeL22 = false;
+	boolean checkMeL23 = false;
+	boolean checkMeL24 = false;
+	boolean checkMeL25 = false;
+	boolean checkMeL26 = false;
+	boolean checkMeL27 = false;
 	JButton balloonButton;
 	JButton sparklesButton;
 	JButton backpackButton;
@@ -51,6 +63,8 @@ public class Game implements MouseListener {
 	JButton cloudButton;
 	JButton chickenButton;
 	JButton roseButton;
+	JButton earthButton;
+	JButton cactusButton;
 
 	public static void main(String[] args) {
 
@@ -61,6 +75,7 @@ public class Game implements MouseListener {
 	Game() {
 
 		setup();
+		timer.start();
 
 	}
 
@@ -199,7 +214,7 @@ public class Game implements MouseListener {
 			panel.add(cloudButton);
 			cloudButton.addMouseListener(this);
 			cloudButton.setBorder(null);
-			cloudButton.setBounds(460, 535, 30, 30);
+			cloudButton.setBounds(460, 529, 30, 30);
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
@@ -210,7 +225,7 @@ public class Game implements MouseListener {
 			panel.add(roseButton);
 			roseButton.addMouseListener(this);
 			roseButton.setBorder(null);
-			roseButton.setBounds(953, 903, 30, 30);
+			roseButton.setBounds(719, 664, 30, 30);
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
@@ -221,7 +236,7 @@ public class Game implements MouseListener {
 			panel.add(chickenButton);
 			chickenButton.addMouseListener(this);
 			chickenButton.setBorder(null);
-			chickenButton.setBounds(953, 903, 30, 30);
+			chickenButton.setBounds(351, 575, 30, 30);
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
@@ -233,6 +248,28 @@ public class Game implements MouseListener {
 			keyButton.addMouseListener(this);
 			keyButton.setBorder(null);
 			keyButton.setBounds(953, 903, 30, 30);
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+		try {
+			Image earth = ImageIO.read(getClass().getResource("earth.png"));
+			earthButton = new JButton(new ImageIcon(earth));
+			panel.setLayout(null);
+			panel.add(earthButton);
+			earthButton.addMouseListener(this);
+			earthButton.setBorder(null);
+			earthButton.setBounds(1224, 879, 30, 30);
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+		try {
+			Image cactus = ImageIO.read(getClass().getResource("cactus.png"));
+			cactusButton = new JButton(new ImageIcon(cactus));
+			panel.setLayout(null);
+			panel.add(cactusButton);
+			cactusButton.addMouseListener(this);
+			cactusButton.setBorder(null);
+			cactusButton.setBounds(578, 588, 30, 30);
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
@@ -288,37 +325,37 @@ public class Game implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource().equals(balloonButton)) {
+		if (e.getSource() == (balloonButton)) {
 			balloonButton.setVisible(false);
 			bar.foundBalloon();
 			checkMe = true;
 		}
-		if (e.getSource().equals(pawprintsButton)) {
+		if (e.getSource() == (pawprintsButton)) {
 			pawprintsButton.setVisible(false);
 			bar.foundPawprint();
 			checkMe2 = true;
 		}
-		if (e.getSource().equals(ringButton)) {
+		if (e.getSource() == (ringButton)) {
 			ringButton.setVisible(false);
 			bar.foundRing();
 			checkMe3 = true;
 		}
-		if (e.getSource().equals(snakeButton)) {
+		if (e.getSource() == (snakeButton)) {
 			snakeButton.setVisible(false);
 			bar.foundSnake();
 			checkMe4 = true;
 		}
-		if (e.getSource().equals(backpackButton)) {
+		if (e.getSource() == (backpackButton)) {
 			backpackButton.setVisible(false);
 			bar.foundBackpack();
 			checkMe5 = true;
 		}
-		if (e.getSource().equals(sparklesButton)) {
+		if (e.getSource() == (sparklesButton)) {
 			sparklesButton.setVisible(false);
 			bar.foundSparkles();
 			checkMe6 = true;
 		}
-		if (e.getSource().equals(diamondButton)) {
+		if (e.getSource() == (diamondButton)) {
 			diamondButton.setVisible(false);
 			bar.foundDiamond();
 			checkMe7 = true;
@@ -326,7 +363,8 @@ public class Game implements MouseListener {
 
 		if (checkMe == true && checkMe2 == true && checkMe3 == true && checkMe4 == true && checkMe5 == true
 				&& checkMe6 == true && checkMe7 == true) {
-			JOptionPane.showMessageDialog(null, "Congratulations! You found all the pictures! \n Ready for level 2?");
+			timer.stop();
+			JOptionPane.showMessageDialog(null, "Congratulations! You found all the pictures! \n You finished the puzzle in: " + time + " seconds. \n Ready for level 2?");
 			panel.nextLevelPicture();
 			bar.nextLevelBar();
 			gameNumber += 1;
@@ -338,28 +376,51 @@ public class Game implements MouseListener {
 			checkMe6 = false;
 			checkMe7 = false;
 			levelTwoButtons();
+			time = 0;
+			timer.restart();
 
 		}
 
-		if (e.getSource().equals(appleButton)) {
+		if (e.getSource() == (appleButton)) {
 			appleButton.setVisible(false);
 			bar.foundApple();
-			checkMe = true;
+			checkMeL2 = true;
 		}
-		if (e.getSource().equals(bowButton)) {
+		if (e.getSource() == (bowButton)) {
 			bowButton.setVisible(false);
 			bar.foundBow();
-			checkMe2 = true;
+			checkMeL22 = true;
 		}
-		if (e.getSource().equals(roseButton)) {
+		if (e.getSource() == (roseButton)) {
 			roseButton.setVisible(false);
 			bar.foundRose();
-			checkMe3 = true;
+			checkMeL23 = true;
 		}
-		if (e.getSource().equals(cloudButton)) {
+		if (e.getSource() == (cloudButton)) {
 			cloudButton.setVisible(false);
 			bar.foundCloud();
-			checkMe4 = true;
+			checkMeL24 = true;
+		}
+		if (e.getSource() == (chickenButton)) {
+			chickenButton.setVisible(false);
+			bar.foundChicken();
+			checkMeL25 = true;
+		}
+		if (e.getSource() == (earthButton)) {
+			earthButton.setVisible(false);
+			bar.foundEarth();
+			checkMeL26 = true;
+		}
+		if (e.getSource() == (cactusButton)) {
+			cactusButton.setVisible(false);
+			bar.foundCactus();
+			checkMeL27 = true;
+		}
+		
+		if (checkMeL2 == true && checkMeL22 == true && checkMeL23 == true && checkMeL24 == true && checkMeL25 == true
+				&& checkMeL26 == true && checkMeL27 == true) {
+			timer.stop();
+			JOptionPane.showMessageDialog(null, "Congratulations! You found all the pictures! \n You finished the puzzle in: " + time + " seconds.");
 		}
 	}
 
@@ -378,6 +439,13 @@ public class Game implements MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		time += 1;
+		bar.showTime(time);
 	}
 
 }
