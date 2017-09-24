@@ -84,7 +84,7 @@ public class SideBar extends JPanel implements ActionListener, KeyListener {
 		balloonName.setBounds(95, findMeY7, 250, 75);
 		add(timeName);
 		timeName.setFont(new Font("Serif", Font.PLAIN, 30));
-		timeName.setBounds(95, 900, 250, 75);
+		timeName.setBounds(95, 850, 250, 75);
 
 	}
 

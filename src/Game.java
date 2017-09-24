@@ -138,7 +138,7 @@ public class Game implements MouseListener, ActionListener {
 			System.out.println(ex);
 		}
 		try {
-			Image snake = ImageIO.read(getClass().getResource("Snake.png"));
+			Image snake = ImageIO.read(getClass().getResource("snake.png"));
 			snakeButton = new JButton(new ImageIcon(snake));
 			panel.setLayout(null);
 			panel.add(snakeButton);
@@ -421,6 +421,7 @@ public class Game implements MouseListener, ActionListener {
 				&& checkMeL26 == true && checkMeL27 == true) {
 			timer.stop();
 			JOptionPane.showMessageDialog(null, "Congratulations! You found all the pictures! \n You finished the puzzle in: " + time + " seconds.");
+			System.exit(0);
 		}
 	}
 
